@@ -1,0 +1,743 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ra_dataset" targetNamespace="http://tempuri.org/ra_dataset.xsd" xmlns:mstns="http://tempuri.org/ra_dataset.xsd" xmlns="http://tempuri.org/ra_dataset.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="RecipeAppConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="RecipeAppConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RecipeApp.Properties.Settings.GlobalReference.Default.RecipeAppConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AllTablesTableAdapter" GeneratorDataComponentClassName="AllTablesTableAdapter" Name="AllTables" UserDataComponentName="AllTablesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill_all_data" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_all_data" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_all_data">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT Ingredient.*, Measure.*, Recipe.*, RecipeImage.*, Review.*, ReviewImage.*, Users.*
+FROM  Measure INNER JOIN
+         Ingredient INNER JOIN
+         RecipeImage INNER JOIN
+         Recipe ON RecipeImage.RecipeImageId = Recipe.RecipeImageId INNER JOIN
+         RecipeIngredient ON Recipe.RecipeId = RecipeIngredient.RecipeId ON Ingredient.IngredientId = RecipeIngredient.IngredientId ON Measure.MeasureId = RecipeIngredient.MeasureId INNER JOIN
+         Review ON Recipe.RecipeId = Review.RecipeId INNER JOIN
+         ReviewImage ON Review.ReviewImageId = ReviewImage.ReviewImageId INNER JOIN
+         Users ON Recipe.UserId = Users.UserId AND Review.UserId = Users.UserId</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IngredientId" DataSetColumn="IngredientId" />
+              <Mapping SourceColumn="IngredientName" DataSetColumn="IngredientName" />
+              <Mapping SourceColumn="MeasureId" DataSetColumn="MeasureId" />
+              <Mapping SourceColumn="Measurement" DataSetColumn="Measurement" />
+              <Mapping SourceColumn="RecipeId" DataSetColumn="RecipeId" />
+              <Mapping SourceColumn="RecipeName" DataSetColumn="RecipeName" />
+              <Mapping SourceColumn="UserId" DataSetColumn="UserId" />
+              <Mapping SourceColumn="RecipeImageId" DataSetColumn="RecipeImageId" />
+              <Mapping SourceColumn="Instructions" DataSetColumn="Instructions" />
+              <Mapping SourceColumn="RecipeDescription" DataSetColumn="RecipeDescription" />
+              <Mapping SourceColumn="RecipeImageId1" DataSetColumn="RecipeImageId1" />
+              <Mapping SourceColumn="Image" DataSetColumn="Image" />
+              <Mapping SourceColumn="ReviewId" DataSetColumn="ReviewId" />
+              <Mapping SourceColumn="UserId1" DataSetColumn="UserId1" />
+              <Mapping SourceColumn="RecipeId1" DataSetColumn="RecipeId1" />
+              <Mapping SourceColumn="ReviewImageId" DataSetColumn="ReviewImageId" />
+              <Mapping SourceColumn="Rating" DataSetColumn="Rating" />
+              <Mapping SourceColumn="ReviewDescription" DataSetColumn="ReviewDescription" />
+              <Mapping SourceColumn="ReviewImageId1" DataSetColumn="ReviewImageId1" />
+              <Mapping SourceColumn="Image1" DataSetColumn="Image1" />
+              <Mapping SourceColumn="UserId2" DataSetColumn="UserId2" />
+              <Mapping SourceColumn="EmailAddress" DataSetColumn="EmailAddress" />
+              <Mapping SourceColumn="Password" DataSetColumn="Password" />
+              <Mapping SourceColumn="Fname" DataSetColumn="Fname" />
+              <Mapping SourceColumn="Lname" DataSetColumn="Lname" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="UsersTableAdapter" GeneratorDataComponentClassName="UsersTableAdapter" Name="Users" UserDataComponentName="UsersTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.Users" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_UserData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_UserData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_UserData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Users] WHERE (([UserId] = @Original_UserId) AND ([EmailAddress] = @Original_EmailAddress) AND ([Password] = @Original_Password) AND ([Fname] = @Original_Fname))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_EmailAddress" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="EmailAddress" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Password" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Password" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Fname" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Fname" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT UserId, EmailAddress, Password, Fname
+FROM  Users</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Users] SET [EmailAddress] = @EmailAddress, [Password] = @Password, [Fname] = @Fname WHERE (([UserId] = @Original_UserId) AND ([EmailAddress] = @Original_EmailAddress) AND ([Password] = @Original_Password) AND ([Fname] = @Original_Fname));
+SELECT UserId, EmailAddress, Password, Fname FROM Users WHERE (UserId = @UserId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@EmailAddress" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="EmailAddress" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Password" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Password" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Fname" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Fname" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_EmailAddress" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="EmailAddress" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Password" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Password" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Fname" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Fname" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="UserId" ColumnName="UserId" DataSourceName="RecipeApp.dbo.Users" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@UserId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="UserId" DataSetColumn="UserId" />
+              <Mapping SourceColumn="EmailAddress" DataSetColumn="EmailAddress" />
+              <Mapping SourceColumn="Password" DataSetColumn="Password" />
+              <Mapping SourceColumn="Fname" DataSetColumn="Fname" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RecipeImageTableAdapter" GeneratorDataComponentClassName="RecipeImageTableAdapter" Name="RecipeImage" UserDataComponentName="RecipeImageTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.RecipeImage" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_RecimeImageData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_RecimeImageData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_RecimeImageData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [RecipeImage] WHERE (([RecipeImageId] = @Original_RecipeImageId))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [RecipeImage] DEFAULT VALUES;
+SELECT RecipeImageId FROM RecipeImage WHERE (RecipeImageId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT RecipeImageId
+FROM  RecipeImage</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RecipeImageId" DataSetColumn="RecipeImageId" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RecipeTableAdapter" GeneratorDataComponentClassName="RecipeTableAdapter" Name="Recipe" UserDataComponentName="RecipeTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.Recipe" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_RecipeData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_RecipeData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_RecipeData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Recipe] WHERE (([RecipeId] = @Original_RecipeId) AND ([RecipeName] = @Original_RecipeName) AND ([UserId] = @Original_UserId) AND ((@IsNull_RecipeImageId = 1 AND [RecipeImageId] IS NULL) OR ([RecipeImageId] = @Original_RecipeImageId)) AND ([Instructions] = @Original_Instructions) AND ((@IsNull_RecipeDescription = 1 AND [RecipeDescription] IS NULL) OR ([RecipeDescription] = @Original_RecipeDescription)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RecipeName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Instructions" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Instructions" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecipeDescription" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RecipeDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Recipe] ([RecipeName], [UserId], [RecipeImageId], [Instructions], [RecipeDescription]) VALUES (@RecipeName, @UserId, @RecipeImageId, @Instructions, @RecipeDescription);
+SELECT RecipeId, RecipeName, UserId, RecipeImageId, Instructions, RecipeDescription FROM Recipe WHERE (RecipeId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RecipeName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Instructions" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Instructions" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RecipeDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT RecipeId, RecipeName, UserId, RecipeImageId, Instructions, RecipeDescription
+FROM  Recipe</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Recipe] SET [RecipeName] = @RecipeName, [UserId] = @UserId, [RecipeImageId] = @RecipeImageId, [Instructions] = @Instructions, [RecipeDescription] = @RecipeDescription WHERE (([RecipeId] = @Original_RecipeId) AND ([RecipeName] = @Original_RecipeName) AND ([UserId] = @Original_UserId) AND ((@IsNull_RecipeImageId = 1 AND [RecipeImageId] IS NULL) OR ([RecipeImageId] = @Original_RecipeImageId)) AND ([Instructions] = @Original_Instructions) AND ((@IsNull_RecipeDescription = 1 AND [RecipeDescription] IS NULL) OR ([RecipeDescription] = @Original_RecipeDescription)));
+SELECT RecipeId, RecipeName, UserId, RecipeImageId, Instructions, RecipeDescription FROM Recipe WHERE (RecipeId = @RecipeId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RecipeName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Instructions" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Instructions" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@RecipeDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RecipeName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Instructions" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Instructions" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_RecipeDescription" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_RecipeDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="RecipeDescription" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="RecipeId" ColumnName="RecipeId" DataSourceName="RecipeApp.dbo.Recipe" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RecipeId" DataSetColumn="RecipeId" />
+              <Mapping SourceColumn="RecipeName" DataSetColumn="RecipeName" />
+              <Mapping SourceColumn="UserId" DataSetColumn="UserId" />
+              <Mapping SourceColumn="RecipeImageId" DataSetColumn="RecipeImageId" />
+              <Mapping SourceColumn="Instructions" DataSetColumn="Instructions" />
+              <Mapping SourceColumn="RecipeDescription" DataSetColumn="RecipeDescription" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReviewImageTableAdapter" GeneratorDataComponentClassName="ReviewImageTableAdapter" Name="ReviewImage" UserDataComponentName="ReviewImageTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.ReviewImage" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_ReviewImageData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_ReviewImageData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_ReviewImageData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [ReviewImage] WHERE (([ReviewImageId] = @Original_ReviewImageId))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [ReviewImage] DEFAULT VALUES;
+SELECT ReviewImageId FROM ReviewImage WHERE (ReviewImageId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ReviewImageId
+FROM  ReviewImage</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ReviewImageId" DataSetColumn="ReviewImageId" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReviewTableAdapter" GeneratorDataComponentClassName="ReviewTableAdapter" Name="Review" UserDataComponentName="ReviewTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.Review" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_ReviewData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_ReviewData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_ReviewData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Review] WHERE (([ReviewId] = @Original_ReviewId) AND ([UserId] = @Original_UserId) AND ([RecipeId] = @Original_RecipeId) AND ((@IsNull_ReviewImageId = 1 AND [ReviewImageId] IS NULL) OR ([ReviewImageId] = @Original_ReviewImageId)) AND ([Rating] = @Original_Rating) AND ((@IsNull_ReviewDescription = 1 AND [ReviewDescription] IS NULL) OR ([ReviewDescription] = @Original_ReviewDescription)))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ReviewId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Rating" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ReviewDescription" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ReviewDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Review] ([UserId], [RecipeId], [ReviewImageId], [Rating], [ReviewDescription]) VALUES (@UserId, @RecipeId, @ReviewImageId, @Rating, @ReviewDescription);
+SELECT ReviewId, UserId, RecipeId, ReviewImageId, Rating, ReviewDescription FROM Review WHERE (ReviewId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Rating" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ReviewDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT ReviewId, UserId, RecipeId, ReviewImageId, Rating, ReviewDescription
+FROM  Review</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Review] SET [UserId] = @UserId, [RecipeId] = @RecipeId, [ReviewImageId] = @ReviewImageId, [Rating] = @Rating, [ReviewDescription] = @ReviewDescription WHERE (([ReviewId] = @Original_ReviewId) AND ([UserId] = @Original_UserId) AND ([RecipeId] = @Original_RecipeId) AND ((@IsNull_ReviewImageId = 1 AND [ReviewImageId] IS NULL) OR ([ReviewImageId] = @Original_ReviewImageId)) AND ([Rating] = @Original_Rating) AND ((@IsNull_ReviewDescription = 1 AND [ReviewDescription] IS NULL) OR ([ReviewDescription] = @Original_ReviewDescription)));
+SELECT ReviewId, UserId, RecipeId, ReviewImageId, Rating, ReviewDescription FROM Review WHERE (ReviewId = @ReviewId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Rating" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@ReviewDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ReviewId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_UserId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="UserId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_ReviewImageId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewImageId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_Rating" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="Rating" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IsNull_ReviewDescription" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="true" SourceVersion="Original" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_ReviewDescription" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="ReviewDescription" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="ReviewId" ColumnName="ReviewId" DataSourceName="RecipeApp.dbo.Review" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@ReviewId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="ReviewId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="ReviewId" DataSetColumn="ReviewId" />
+              <Mapping SourceColumn="UserId" DataSetColumn="UserId" />
+              <Mapping SourceColumn="RecipeId" DataSetColumn="RecipeId" />
+              <Mapping SourceColumn="ReviewImageId" DataSetColumn="ReviewImageId" />
+              <Mapping SourceColumn="Rating" DataSetColumn="Rating" />
+              <Mapping SourceColumn="ReviewDescription" DataSetColumn="ReviewDescription" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="IngredientTableAdapter" GeneratorDataComponentClassName="IngredientTableAdapter" Name="Ingredient" UserDataComponentName="IngredientTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.Ingredient" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_IngredientData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_IngredientData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_IngredientData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Ingredient] WHERE (([IngredientId] = @Original_IngredientId) AND ([IngredientName] = @Original_IngredientName))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_IngredientName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="IngredientName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Ingredient] ([IngredientName]) VALUES (@IngredientName);
+SELECT IngredientId, IngredientName FROM Ingredient WHERE (IngredientId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@IngredientName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="IngredientName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT IngredientId, IngredientName
+FROM  Ingredient</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Ingredient] SET [IngredientName] = @IngredientName WHERE (([IngredientId] = @Original_IngredientId) AND ([IngredientName] = @Original_IngredientName));
+SELECT IngredientId, IngredientName FROM Ingredient WHERE (IngredientId = @IngredientId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@IngredientName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="IngredientName" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_IngredientName" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="IngredientName" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="IngredientId" ColumnName="IngredientId" DataSourceName="RecipeApp.dbo.Ingredient" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IngredientId" DataSetColumn="IngredientId" />
+              <Mapping SourceColumn="IngredientName" DataSetColumn="IngredientName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="MeasureTableAdapter" GeneratorDataComponentClassName="MeasureTableAdapter" Name="Measure" UserDataComponentName="MeasureTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.Measure" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_MeasureData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_MeasureData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_MeasureData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [Measure] WHERE (([MeasureId] = @Original_MeasureId) AND ([Measurement] = @Original_Measurement))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Measurement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Measurement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [Measure] ([Measurement]) VALUES (@Measurement);
+SELECT MeasureId, Measurement FROM Measure WHERE (MeasureId = SCOPE_IDENTITY())</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Measurement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Measurement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT MeasureId, Measurement
+FROM  Measure</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [Measure] SET [Measurement] = @Measurement WHERE (([MeasureId] = @Original_MeasureId) AND ([Measurement] = @Original_Measurement));
+SELECT MeasureId, Measurement FROM Measure WHERE (MeasureId = @MeasureId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Measurement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Measurement" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="AnsiString" Direction="Input" ParameterName="@Original_Measurement" Precision="0" ProviderType="VarChar" Scale="0" Size="0" SourceColumn="Measurement" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="MeasureId" ColumnName="MeasureId" DataSourceName="RecipeApp.dbo.Measure" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MeasureId" DataSetColumn="MeasureId" />
+              <Mapping SourceColumn="Measurement" DataSetColumn="Measurement" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RecipeIngredientTableAdapter" GeneratorDataComponentClassName="RecipeIngredientTableAdapter" Name="RecipeIngredient" UserDataComponentName="RecipeIngredientTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="RecipeAppConnectionString (Settings)" DbObjectName="RecipeApp.dbo.RecipeIngredient" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill_RecipeIngredientData" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill_RecipeIngredientData" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill_RecipeIngredientData">
+                <DeleteCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>DELETE FROM [RecipeIngredient] WHERE (([RecipeId] = @Original_RecipeId) AND ([IngredientId] = @Original_IngredientId) AND ([MeasureId] = @Original_MeasureId) AND ([Quantity] = @Original_Quantity))</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Quantity" Precision="3" ProviderType="Decimal" Scale="1" Size="0" SourceColumn="Quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </DeleteCommand>
+                <InsertCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>INSERT INTO [RecipeIngredient] ([RecipeId], [IngredientId], [MeasureId], [Quantity]) VALUES (@RecipeId, @IngredientId, @MeasureId, @Quantity);
+SELECT RecipeId, IngredientId, MeasureId, Quantity FROM RecipeIngredient WHERE (IngredientId = @IngredientId) AND (RecipeId = @RecipeId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Quantity" Precision="3" ProviderType="Decimal" Scale="1" Size="0" SourceColumn="Quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </InsertCommand>
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT RecipeId, IngredientId, MeasureId, Quantity
+FROM  RecipeIngredient</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>UPDATE [RecipeIngredient] SET [RecipeId] = @RecipeId, [IngredientId] = @IngredientId, [MeasureId] = @MeasureId, [Quantity] = @Quantity WHERE (([RecipeId] = @Original_RecipeId) AND ([IngredientId] = @Original_IngredientId) AND ([MeasureId] = @Original_MeasureId) AND ([Quantity] = @Original_Quantity));
+SELECT RecipeId, IngredientId, MeasureId, Quantity FROM RecipeIngredient WHERE (IngredientId = @IngredientId) AND (RecipeId = @RecipeId)</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Quantity" Precision="3" ProviderType="Decimal" Scale="1" Size="0" SourceColumn="Quantity" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_RecipeId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="RecipeId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_IngredientId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="IngredientId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Int32" Direction="Input" ParameterName="@Original_MeasureId" Precision="0" ProviderType="Int" Scale="0" Size="0" SourceColumn="MeasureId" SourceColumnNullMapping="false" SourceVersion="Original" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="" DataSourceName="" DbType="Decimal" Direction="Input" ParameterName="@Original_Quantity" Precision="3" ProviderType="Decimal" Scale="1" Size="0" SourceColumn="Quantity" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="RecipeId" DataSetColumn="RecipeId" />
+              <Mapping SourceColumn="IngredientId" DataSetColumn="IngredientId" />
+              <Mapping SourceColumn="MeasureId" DataSetColumn="MeasureId" />
+              <Mapping SourceColumn="Quantity" DataSetColumn="Quantity" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ra_dataset" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="ra_dataset" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ra_dataset">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="AllTables" msprop:Generator_RowEvHandlerName="AllTablesRowChangeEventHandler" msprop:Generator_RowDeletedName="AllTablesRowDeleted" msprop:Generator_RowDeletingName="AllTablesRowDeleting" msprop:Generator_RowEvArgName="AllTablesRowChangeEvent" msprop:Generator_TablePropName="AllTables" msprop:Generator_RowChangedName="AllTablesRowChanged" msprop:Generator_UserTableName="AllTables" msprop:Generator_RowChangingName="AllTablesRowChanging" msprop:Generator_RowClassName="AllTablesRow" msprop:Generator_TableClassName="AllTablesDataTable" msprop:Generator_TableVarName="tableAllTables">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IngredientId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IngredientIdColumn" msprop:Generator_ColumnPropNameInRow="IngredientId" msprop:Generator_UserColumnName="IngredientId" msprop:Generator_ColumnVarNameInTable="columnIngredientId" type="xs:int" />
+              <xs:element name="IngredientName" msprop:Generator_ColumnPropNameInTable="IngredientNameColumn" msprop:Generator_ColumnPropNameInRow="IngredientName" msprop:Generator_UserColumnName="IngredientName" msprop:Generator_ColumnVarNameInTable="columnIngredientName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MeasureId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="MeasureIdColumn" msprop:Generator_ColumnPropNameInRow="MeasureId" msprop:Generator_UserColumnName="MeasureId" msprop:Generator_ColumnVarNameInTable="columnMeasureId" type="xs:int" />
+              <xs:element name="Measurement" msprop:Generator_ColumnPropNameInTable="MeasurementColumn" msprop:Generator_ColumnPropNameInRow="Measurement" msprop:Generator_UserColumnName="Measurement" msprop:Generator_ColumnVarNameInTable="columnMeasurement">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecipeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="RecipeIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeId" msprop:Generator_UserColumnName="RecipeId" msprop:Generator_ColumnVarNameInTable="columnRecipeId" type="xs:int" />
+              <xs:element name="RecipeName" msprop:Generator_ColumnPropNameInTable="RecipeNameColumn" msprop:Generator_ColumnPropNameInRow="RecipeName" msprop:Generator_UserColumnName="RecipeName" msprop:Generator_ColumnVarNameInTable="columnRecipeName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_UserColumnName="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" type="xs:int" />
+              <xs:element name="RecipeImageId" msprop:Generator_ColumnPropNameInTable="RecipeImageIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeImageId" msprop:Generator_UserColumnName="RecipeImageId" msprop:Generator_ColumnVarNameInTable="columnRecipeImageId" type="xs:int" minOccurs="0" />
+              <xs:element name="Instructions" msprop:Generator_ColumnPropNameInTable="InstructionsColumn" msprop:Generator_ColumnPropNameInRow="Instructions" msprop:Generator_UserColumnName="Instructions" msprop:Generator_ColumnVarNameInTable="columnInstructions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="800" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecipeDescription" msprop:Generator_ColumnPropNameInTable="RecipeDescriptionColumn" msprop:Generator_ColumnPropNameInRow="RecipeDescription" msprop:Generator_UserColumnName="RecipeDescription" msprop:Generator_ColumnVarNameInTable="columnRecipeDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecipeImageId1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="RecipeImageId1Column" msprop:Generator_ColumnPropNameInRow="RecipeImageId1" msprop:Generator_UserColumnName="RecipeImageId1" msprop:Generator_ColumnVarNameInTable="columnRecipeImageId1" type="xs:int" />
+              <xs:element name="Image" msprop:Generator_ColumnPropNameInTable="ImageColumn" msprop:Generator_ColumnPropNameInRow="Image" msprop:Generator_UserColumnName="Image" msprop:Generator_ColumnVarNameInTable="columnImage" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="ReviewId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="ReviewIdColumn" msprop:Generator_ColumnPropNameInRow="ReviewId" msprop:Generator_UserColumnName="ReviewId" msprop:Generator_ColumnVarNameInTable="columnReviewId" type="xs:int" />
+              <xs:element name="UserId1" msprop:Generator_ColumnPropNameInTable="UserId1Column" msprop:Generator_ColumnPropNameInRow="UserId1" msprop:Generator_UserColumnName="UserId1" msprop:Generator_ColumnVarNameInTable="columnUserId1" type="xs:int" />
+              <xs:element name="RecipeId1" msprop:Generator_ColumnPropNameInTable="RecipeId1Column" msprop:Generator_ColumnPropNameInRow="RecipeId1" msprop:Generator_UserColumnName="RecipeId1" msprop:Generator_ColumnVarNameInTable="columnRecipeId1" type="xs:int" />
+              <xs:element name="ReviewImageId" msprop:Generator_ColumnPropNameInTable="ReviewImageIdColumn" msprop:Generator_ColumnPropNameInRow="ReviewImageId" msprop:Generator_UserColumnName="ReviewImageId" msprop:Generator_ColumnVarNameInTable="columnReviewImageId" type="xs:int" minOccurs="0" />
+              <xs:element name="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_UserColumnName="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" type="xs:int" />
+              <xs:element name="ReviewDescription" msprop:Generator_ColumnPropNameInTable="ReviewDescriptionColumn" msprop:Generator_ColumnPropNameInRow="ReviewDescription" msprop:Generator_UserColumnName="ReviewDescription" msprop:Generator_ColumnVarNameInTable="columnReviewDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ReviewImageId1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="ReviewImageId1Column" msprop:Generator_ColumnPropNameInRow="ReviewImageId1" msprop:Generator_UserColumnName="ReviewImageId1" msprop:Generator_ColumnVarNameInTable="columnReviewImageId1" type="xs:int" />
+              <xs:element name="Image1" msprop:Generator_ColumnPropNameInTable="Image1Column" msprop:Generator_ColumnPropNameInRow="Image1" msprop:Generator_UserColumnName="Image1" msprop:Generator_ColumnVarNameInTable="columnImage1" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="UserId2" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="UserId2Column" msprop:Generator_ColumnPropNameInRow="UserId2" msprop:Generator_UserColumnName="UserId2" msprop:Generator_ColumnVarNameInTable="columnUserId2" type="xs:int" />
+              <xs:element name="EmailAddress" msprop:Generator_ColumnPropNameInTable="EmailAddressColumn" msprop:Generator_ColumnPropNameInRow="EmailAddress" msprop:Generator_UserColumnName="EmailAddress" msprop:Generator_ColumnVarNameInTable="columnEmailAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnVarNameInTable="columnPassword">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fname" msprop:Generator_ColumnPropNameInTable="FnameColumn" msprop:Generator_ColumnPropNameInRow="Fname" msprop:Generator_UserColumnName="Fname" msprop:Generator_ColumnVarNameInTable="columnFname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Lname" msprop:Generator_ColumnPropNameInTable="LnameColumn" msprop:Generator_ColumnPropNameInRow="Lname" msprop:Generator_UserColumnName="Lname" msprop:Generator_ColumnVarNameInTable="columnLname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Users" msprop:Generator_RowEvHandlerName="UsersRowChangeEventHandler" msprop:Generator_RowDeletedName="UsersRowDeleted" msprop:Generator_RowDeletingName="UsersRowDeleting" msprop:Generator_RowEvArgName="UsersRowChangeEvent" msprop:Generator_TablePropName="Users" msprop:Generator_RowChangedName="UsersRowChanged" msprop:Generator_UserTableName="Users" msprop:Generator_RowChangingName="UsersRowChanging" msprop:Generator_RowClassName="UsersRow" msprop:Generator_TableClassName="UsersDataTable" msprop:Generator_TableVarName="tableUsers">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UserId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_UserColumnName="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" type="xs:int" />
+              <xs:element name="EmailAddress" msprop:Generator_ColumnPropNameInTable="EmailAddressColumn" msprop:Generator_ColumnPropNameInRow="EmailAddress" msprop:Generator_UserColumnName="EmailAddress" msprop:Generator_ColumnVarNameInTable="columnEmailAddress">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Password" msprop:Generator_ColumnPropNameInTable="PasswordColumn" msprop:Generator_ColumnPropNameInRow="Password" msprop:Generator_UserColumnName="Password" msprop:Generator_ColumnVarNameInTable="columnPassword">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="60" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fname" msprop:Generator_ColumnPropNameInTable="FnameColumn" msprop:Generator_ColumnPropNameInRow="Fname" msprop:Generator_UserColumnName="Fname" msprop:Generator_ColumnVarNameInTable="columnFname">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RecipeImage" msprop:Generator_RowEvHandlerName="RecipeImageRowChangeEventHandler" msprop:Generator_RowDeletedName="RecipeImageRowDeleted" msprop:Generator_RowDeletingName="RecipeImageRowDeleting" msprop:Generator_RowEvArgName="RecipeImageRowChangeEvent" msprop:Generator_TablePropName="RecipeImage" msprop:Generator_RowChangedName="RecipeImageRowChanged" msprop:Generator_UserTableName="RecipeImage" msprop:Generator_RowChangingName="RecipeImageRowChanging" msprop:Generator_RowClassName="RecipeImageRow" msprop:Generator_TableClassName="RecipeImageDataTable" msprop:Generator_TableVarName="tableRecipeImage">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RecipeImageId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="RecipeImageIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeImageId" msprop:Generator_UserColumnName="RecipeImageId" msprop:Generator_ColumnVarNameInTable="columnRecipeImageId" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Recipe" msprop:Generator_RowEvHandlerName="RecipeRowChangeEventHandler" msprop:Generator_RowDeletedName="RecipeRowDeleted" msprop:Generator_RowDeletingName="RecipeRowDeleting" msprop:Generator_RowEvArgName="RecipeRowChangeEvent" msprop:Generator_TablePropName="Recipe" msprop:Generator_RowChangedName="RecipeRowChanged" msprop:Generator_UserTableName="Recipe" msprop:Generator_RowChangingName="RecipeRowChanging" msprop:Generator_RowClassName="RecipeRow" msprop:Generator_TableClassName="RecipeDataTable" msprop:Generator_TableVarName="tableRecipe">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RecipeId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="RecipeIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeId" msprop:Generator_UserColumnName="RecipeId" msprop:Generator_ColumnVarNameInTable="columnRecipeId" type="xs:int" />
+              <xs:element name="RecipeName" msprop:Generator_ColumnPropNameInTable="RecipeNameColumn" msprop:Generator_ColumnPropNameInRow="RecipeName" msprop:Generator_UserColumnName="RecipeName" msprop:Generator_ColumnVarNameInTable="columnRecipeName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_UserColumnName="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" type="xs:int" />
+              <xs:element name="RecipeImageId" msprop:Generator_ColumnPropNameInTable="RecipeImageIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeImageId" msprop:Generator_UserColumnName="RecipeImageId" msprop:Generator_ColumnVarNameInTable="columnRecipeImageId" type="xs:int" minOccurs="0" />
+              <xs:element name="Instructions" msprop:Generator_ColumnPropNameInTable="InstructionsColumn" msprop:Generator_ColumnPropNameInRow="Instructions" msprop:Generator_UserColumnName="Instructions" msprop:Generator_ColumnVarNameInTable="columnInstructions">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="800" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RecipeDescription" msprop:Generator_ColumnPropNameInTable="RecipeDescriptionColumn" msprop:Generator_ColumnPropNameInRow="RecipeDescription" msprop:Generator_UserColumnName="RecipeDescription" msprop:Generator_ColumnVarNameInTable="columnRecipeDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReviewImage" msprop:Generator_RowEvHandlerName="ReviewImageRowChangeEventHandler" msprop:Generator_RowDeletedName="ReviewImageRowDeleted" msprop:Generator_RowDeletingName="ReviewImageRowDeleting" msprop:Generator_RowEvArgName="ReviewImageRowChangeEvent" msprop:Generator_TablePropName="ReviewImage" msprop:Generator_RowChangedName="ReviewImageRowChanged" msprop:Generator_UserTableName="ReviewImage" msprop:Generator_RowChangingName="ReviewImageRowChanging" msprop:Generator_RowClassName="ReviewImageRow" msprop:Generator_TableClassName="ReviewImageDataTable" msprop:Generator_TableVarName="tableReviewImage">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReviewImageId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="ReviewImageIdColumn" msprop:Generator_ColumnPropNameInRow="ReviewImageId" msprop:Generator_UserColumnName="ReviewImageId" msprop:Generator_ColumnVarNameInTable="columnReviewImageId" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Review" msprop:Generator_RowEvHandlerName="ReviewRowChangeEventHandler" msprop:Generator_RowDeletedName="ReviewRowDeleted" msprop:Generator_RowDeletingName="ReviewRowDeleting" msprop:Generator_RowEvArgName="ReviewRowChangeEvent" msprop:Generator_TablePropName="Review" msprop:Generator_RowChangedName="ReviewRowChanged" msprop:Generator_UserTableName="Review" msprop:Generator_RowChangingName="ReviewRowChanging" msprop:Generator_RowClassName="ReviewRow" msprop:Generator_TableClassName="ReviewDataTable" msprop:Generator_TableVarName="tableReview">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ReviewId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="ReviewIdColumn" msprop:Generator_ColumnPropNameInRow="ReviewId" msprop:Generator_UserColumnName="ReviewId" msprop:Generator_ColumnVarNameInTable="columnReviewId" type="xs:int" />
+              <xs:element name="UserId" msprop:Generator_ColumnPropNameInTable="UserIdColumn" msprop:Generator_ColumnPropNameInRow="UserId" msprop:Generator_UserColumnName="UserId" msprop:Generator_ColumnVarNameInTable="columnUserId" type="xs:int" />
+              <xs:element name="RecipeId" msprop:Generator_ColumnPropNameInTable="RecipeIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeId" msprop:Generator_UserColumnName="RecipeId" msprop:Generator_ColumnVarNameInTable="columnRecipeId" type="xs:int" />
+              <xs:element name="ReviewImageId" msprop:Generator_ColumnPropNameInTable="ReviewImageIdColumn" msprop:Generator_ColumnPropNameInRow="ReviewImageId" msprop:Generator_UserColumnName="ReviewImageId" msprop:Generator_ColumnVarNameInTable="columnReviewImageId" type="xs:int" minOccurs="0" />
+              <xs:element name="Rating" msprop:Generator_ColumnPropNameInTable="RatingColumn" msprop:Generator_ColumnPropNameInRow="Rating" msprop:Generator_UserColumnName="Rating" msprop:Generator_ColumnVarNameInTable="columnRating" type="xs:int" />
+              <xs:element name="ReviewDescription" msprop:Generator_ColumnPropNameInTable="ReviewDescriptionColumn" msprop:Generator_ColumnPropNameInRow="ReviewDescription" msprop:Generator_UserColumnName="ReviewDescription" msprop:Generator_ColumnVarNameInTable="columnReviewDescription" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ingredient" msprop:Generator_RowEvHandlerName="IngredientRowChangeEventHandler" msprop:Generator_RowDeletedName="IngredientRowDeleted" msprop:Generator_RowDeletingName="IngredientRowDeleting" msprop:Generator_RowEvArgName="IngredientRowChangeEvent" msprop:Generator_TablePropName="Ingredient" msprop:Generator_RowChangedName="IngredientRowChanged" msprop:Generator_UserTableName="Ingredient" msprop:Generator_RowChangingName="IngredientRowChanging" msprop:Generator_RowClassName="IngredientRow" msprop:Generator_TableClassName="IngredientDataTable" msprop:Generator_TableVarName="tableIngredient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IngredientId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="IngredientIdColumn" msprop:Generator_ColumnPropNameInRow="IngredientId" msprop:Generator_UserColumnName="IngredientId" msprop:Generator_ColumnVarNameInTable="columnIngredientId" type="xs:int" />
+              <xs:element name="IngredientName" msprop:Generator_ColumnPropNameInTable="IngredientNameColumn" msprop:Generator_ColumnPropNameInRow="IngredientName" msprop:Generator_UserColumnName="IngredientName" msprop:Generator_ColumnVarNameInTable="columnIngredientName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Measure" msprop:Generator_RowEvHandlerName="MeasureRowChangeEventHandler" msprop:Generator_RowDeletedName="MeasureRowDeleted" msprop:Generator_RowDeletingName="MeasureRowDeleting" msprop:Generator_RowEvArgName="MeasureRowChangeEvent" msprop:Generator_TablePropName="Measure" msprop:Generator_RowChangedName="MeasureRowChanged" msprop:Generator_UserTableName="Measure" msprop:Generator_RowChangingName="MeasureRowChanging" msprop:Generator_RowClassName="MeasureRow" msprop:Generator_TableClassName="MeasureDataTable" msprop:Generator_TableVarName="tableMeasure">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MeasureId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInTable="MeasureIdColumn" msprop:Generator_ColumnPropNameInRow="MeasureId" msprop:Generator_UserColumnName="MeasureId" msprop:Generator_ColumnVarNameInTable="columnMeasureId" type="xs:int" />
+              <xs:element name="Measurement" msprop:Generator_ColumnPropNameInTable="MeasurementColumn" msprop:Generator_ColumnPropNameInRow="Measurement" msprop:Generator_UserColumnName="Measurement" msprop:Generator_ColumnVarNameInTable="columnMeasurement">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="RecipeIngredient" msprop:Generator_RowEvHandlerName="RecipeIngredientRowChangeEventHandler" msprop:Generator_RowDeletedName="RecipeIngredientRowDeleted" msprop:Generator_RowDeletingName="RecipeIngredientRowDeleting" msprop:Generator_RowEvArgName="RecipeIngredientRowChangeEvent" msprop:Generator_TablePropName="RecipeIngredient" msprop:Generator_RowChangedName="RecipeIngredientRowChanged" msprop:Generator_UserTableName="RecipeIngredient" msprop:Generator_RowChangingName="RecipeIngredientRowChanging" msprop:Generator_RowClassName="RecipeIngredientRow" msprop:Generator_TableClassName="RecipeIngredientDataTable" msprop:Generator_TableVarName="tableRecipeIngredient">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="RecipeId" msprop:Generator_ColumnPropNameInTable="RecipeIdColumn" msprop:Generator_ColumnPropNameInRow="RecipeId" msprop:Generator_UserColumnName="RecipeId" msprop:Generator_ColumnVarNameInTable="columnRecipeId" type="xs:int" />
+              <xs:element name="IngredientId" msprop:Generator_ColumnPropNameInTable="IngredientIdColumn" msprop:Generator_ColumnPropNameInRow="IngredientId" msprop:Generator_UserColumnName="IngredientId" msprop:Generator_ColumnVarNameInTable="columnIngredientId" type="xs:int" />
+              <xs:element name="MeasureId" msprop:Generator_ColumnPropNameInTable="MeasureIdColumn" msprop:Generator_ColumnPropNameInRow="MeasureId" msprop:Generator_UserColumnName="MeasureId" msprop:Generator_ColumnVarNameInTable="columnMeasureId" type="xs:int" />
+              <xs:element name="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Users" />
+      <xs:field xpath="mstns:UserId" />
+    </xs:unique>
+    <xs:unique name="RecipeImage_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RecipeImage" />
+      <xs:field xpath="mstns:RecipeImageId" />
+    </xs:unique>
+    <xs:unique name="Recipe_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Recipe" />
+      <xs:field xpath="mstns:RecipeId" />
+    </xs:unique>
+    <xs:unique name="ReviewImage_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ReviewImage" />
+      <xs:field xpath="mstns:ReviewImageId" />
+    </xs:unique>
+    <xs:unique name="Review_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Review" />
+      <xs:field xpath="mstns:ReviewId" />
+    </xs:unique>
+    <xs:unique name="Ingredient_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Ingredient" />
+      <xs:field xpath="mstns:IngredientId" />
+    </xs:unique>
+    <xs:unique name="Measure_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Measure" />
+      <xs:field xpath="mstns:MeasureId" />
+    </xs:unique>
+    <xs:unique name="RecipeIngredient_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:RecipeIngredient" />
+      <xs:field xpath="mstns:RecipeId" />
+      <xs:field xpath="mstns:IngredientId" />
+    </xs:unique>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="FK__Recipe__RecipeIm__31EC6D26" msdata:parent="RecipeImage" msdata:child="Recipe" msdata:parentkey="RecipeImageId" msdata:childkey="RecipeImageId" msprop:Generator_UserParentTable="RecipeImage" msprop:Generator_UserChildTable="Recipe" msprop:Generator_RelationVarName="relationFK__Recipe__RecipeIm__31EC6D26" msprop:Generator_ChildPropName="GetRecipeRows" msprop:Generator_ParentPropName="RecipeImageRow" msprop:Generator_UserRelationName="FK__Recipe__RecipeIm__31EC6D26" />
+      <msdata:Relationship name="FK__Recipe__UserId__30F848ED" msdata:parent="Users" msdata:child="Recipe" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserParentTable="Users" msprop:Generator_UserChildTable="Recipe" msprop:Generator_RelationVarName="relationFK__Recipe__UserId__30F848ED" msprop:Generator_ChildPropName="GetRecipeRows" msprop:Generator_ParentPropName="UsersRow" msprop:Generator_UserRelationName="FK__Recipe__UserId__30F848ED" />
+      <msdata:Relationship name="FK__Review__RecipeId__3B75D760" msdata:parent="Recipe" msdata:child="Review" msdata:parentkey="RecipeId" msdata:childkey="RecipeId" msprop:Generator_UserParentTable="Recipe" msprop:Generator_UserChildTable="Review" msprop:Generator_RelationVarName="relationFK__Review__RecipeId__3B75D760" msprop:Generator_ChildPropName="GetReviewRows" msprop:Generator_ParentPropName="RecipeRow" msprop:Generator_UserRelationName="FK__Review__RecipeId__3B75D760" />
+      <msdata:Relationship name="FK__Review__ReviewIm__3C69FB99" msdata:parent="ReviewImage" msdata:child="Review" msdata:parentkey="ReviewImageId" msdata:childkey="ReviewImageId" msprop:Generator_UserParentTable="ReviewImage" msprop:Generator_UserChildTable="Review" msprop:Generator_RelationVarName="relationFK__Review__ReviewIm__3C69FB99" msprop:Generator_ChildPropName="GetReviewRows" msprop:Generator_ParentPropName="ReviewImageRow" msprop:Generator_UserRelationName="FK__Review__ReviewIm__3C69FB99" />
+      <msdata:Relationship name="FK__Review__UserId__3A81B327" msdata:parent="Users" msdata:child="Review" msdata:parentkey="UserId" msdata:childkey="UserId" msprop:Generator_UserParentTable="Users" msprop:Generator_UserChildTable="Review" msprop:Generator_RelationVarName="relationFK__Review__UserId__3A81B327" msprop:Generator_ChildPropName="GetReviewRows" msprop:Generator_ParentPropName="UsersRow" msprop:Generator_UserRelationName="FK__Review__UserId__3A81B327" />
+      <msdata:Relationship name="FK__RecipeIng__Ingre__35BCFE0A" msdata:parent="Ingredient" msdata:child="RecipeIngredient" msdata:parentkey="IngredientId" msdata:childkey="IngredientId" msprop:Generator_UserParentTable="Ingredient" msprop:Generator_UserChildTable="RecipeIngredient" msprop:Generator_RelationVarName="relationFK__RecipeIng__Ingre__35BCFE0A" msprop:Generator_ChildPropName="GetRecipeIngredientRows" msprop:Generator_ParentPropName="IngredientRow" msprop:Generator_UserRelationName="FK__RecipeIng__Ingre__35BCFE0A" />
+      <msdata:Relationship name="FK__RecipeIng__Measu__36B12243" msdata:parent="Measure" msdata:child="RecipeIngredient" msdata:parentkey="MeasureId" msdata:childkey="MeasureId" msprop:Generator_UserParentTable="Measure" msprop:Generator_UserChildTable="RecipeIngredient" msprop:Generator_RelationVarName="relationFK__RecipeIng__Measu__36B12243" msprop:Generator_ChildPropName="GetRecipeIngredientRows" msprop:Generator_ParentPropName="MeasureRow" msprop:Generator_UserRelationName="FK__RecipeIng__Measu__36B12243" />
+      <msdata:Relationship name="FK__RecipeIng__Recip__34C8D9D1" msdata:parent="Recipe" msdata:child="RecipeIngredient" msdata:parentkey="RecipeId" msdata:childkey="RecipeId" msprop:Generator_UserParentTable="Recipe" msprop:Generator_UserChildTable="RecipeIngredient" msprop:Generator_RelationVarName="relationFK__RecipeIng__Recip__34C8D9D1" msprop:Generator_ChildPropName="GetRecipeIngredientRows" msprop:Generator_ParentPropName="RecipeRow" msprop:Generator_UserRelationName="FK__RecipeIng__Recip__34C8D9D1" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>
