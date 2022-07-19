@@ -1,7 +1,7 @@
 #In order to run the database and application you will first need to download and install a few programs.
 ==========================================================================================================
 
-1. Download and install SQL Server 2019 Express, this is framework for the project database and SQL queries.
+1. Download and install SQL Server 2019 Express, this is the framework for the project database and SQL queries.
 
 2. Download and install the newest version SQL Server Management Studio for a graphical interface for SQL Server.
 
