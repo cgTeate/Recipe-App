@@ -35,9 +35,9 @@
 
 2. Open the SQL Project script and then execute.
 
-3. Right click on Databases folder in the Object Explorer and click refresh. Drop down and open up the Databases folder to see the newly creaeted database.
+3. Right click on Databases folder in the Object Explorer and click refresh. Drop down and open up the Databases folder to see the newly created database.
 
-4. Download the newest version of Visual Studioes. During installation, select the .NET desktop development kit for Windows Application forms.
+4. Download the newest version of Visual Studio. During installation, select the .NET desktop development kit for Windows Application forms.
    
 5. After installation, open the solution file that was given. (RecipeApp.sln)
 
@@ -55,7 +55,7 @@
 11. Click the drop down menu for the "Select or enter a database name" option and select the desired database. (RecipeApp)
     Press OK to connect.
 
-12. Make sure that you close out of both SSMS and Visual Studioes then reopen both SSMS and RecipeApp.sln.
+12. Make sure that you close out of both SSMS and Visual Studio then reopen both SSMS and RecipeApp.sln.
 
 13. Right click the server and select refresh on the Visual Studio Server Explorer to reconnect to SSMS.
 
@@ -69,7 +69,7 @@
 
 3a). Once you selected the previously stated option then, in the left tab, select 'Restart' then select 'Stop' and finally select 'Start'.
 
-4a). If open, close out of SSMS and then reopen it.  Go to Visual Studios and refresh the database server connection in the Server Explorer panel.
+4a). If open, close out of SSMS and then reopen it.  Go to Visual Studio and refresh the database server connection in the Server Explorer panel.
 
 5a). Start the project.
 
